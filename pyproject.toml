@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "refactorandci"
+version = "1"
+description = "homework"
+authors = ["RMcDowell83 <129427114+RMcDowell83@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+poetry env use python
+
+poetry install
