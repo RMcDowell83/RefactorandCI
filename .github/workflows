@@ -1,0 +1,40 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main  # Set your branch name here
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Choose your Python version
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Lint with flake8
+      run: flake8 your_source_code_directory
+      # Replace 'your_source_code_directory' with the directory where your source code is.
+
+    - name: Run tests and generate coverage report
+      run: |
+        pytest --cov=your_source_code_directory --cov-report term-missing tests/
+      # Replace 'your_source_code_directory' with your source code directory and 'tests/' with your tests directory.
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: your_source_code_directory/.coverage.xml  # Replace with your coverage report file
+
+    - name: Push coverage report to Codecov
+      run: codecov -t ${{ secrets.CODECOV_TOKEN }}
