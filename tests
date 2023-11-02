@@ -1,1 +1,22 @@
-import src
+from src import Node, DoublyLinkedList  # Replace with the actual module name
+
+# Define your test functions
+
+def test_size():
+    dL = DoublyLinkedList()
+    # Add nodes to the list
+    # Perform size-related assertions
+    assert dL.size() == expected_size
+
+def test_is_empty():
+    dL = DoublyLinkedList()
+    # Add nodes to the list
+    # Perform is_empty-related assertions
+    assert dL.is_empty() == expected_result
+
+# Define more test functions for other methods
+
+if __name__ == "__main__":
+    test_size()
+    test_is_empty()
+    # Call other test functions
